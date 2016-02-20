@@ -3,87 +3,98 @@
  <meta charset="utf-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Roku Remote</title>
+ <title>Roku Remote</title>
 
  <!-- Latest compiled and minified CSS -->
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
  <!-- Optional theme -->
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
  <link type="text/css" rel="stylesheet" href="assets/css/style.css">
 
 </head>
 <body class="parent">
-<div class="container-fluid child">
- <div class="row">
-  <div class="col-md-12">
-   <div class="row">
-    <div class="col-md-4">
 
-     <button type="button" class="btn btn-block btn-lg btn-primary" id="back">
-      <i class="fa fa-step-backward"></i> Back
-     </button>
-    </div>
-    <div class="col-md-4">
+<table class="child">
+ <tr>
+  <td><button type="button" class="btn btn-block btn-lg btn-default" id="back">
+   <i class="fa fa-step-backward"></i> Back
+  </button></td>
+  <td></td>
+  <td>
+   <button type="button" class="btn btn-lg btn-block btn-default" id="home">
+    <i class="fa fa-home"></i> Home
+   </button>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <!-- empty -->
+  </td>
+  <td><button type="button" class="btn btn-lg btn-block btn-primary" id="up">
+   <i class="fa fa-chevron-up"></i>
+  </button></td>
+ </tr>
+ <tr>
+  <td>
+   <button type="button" class="btn btn-lg btn-block btn-primary" id="left">
+    <i class="fa fa-chevron-left"></i></button>
+  </td>
+  <td>
+   <button type="button" class="btn btn-lg btn-primary btn-block" id="select">
+    Select
+   </button>
+  </td>
+  <td>
+   <button type="button" class="btn btn-lg btn-block btn-primary" id="right">
+    <i class="fa fa-chevron-right"></i>
+   </button>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <!-- empty -->
+  </td>
+  <td>
+   <button type="button" class="btn btn-block btn-lg btn-primary" id="down">
+    <i class="fa fa-chevron-down"></i>
+   </button>
+  </td>
+  <td>
+   <!-- empty -->
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <button type="button" class="btn btn-lg btn-block btn-default" id="InstantReplay">
+    <i class="fa fa-reply"></i>
+   </button>
+  </td>
+  <td><!-- empty --></td>
+  <td>
+   <button type="button" class="btn btn-lg btn-block btn-default" id="info">
+    <i class="fa fa-asterisk"></i>
+   </button>
+  </td>
+ </tr>
+ <tr>
+  <td>
+   <button type="button" class="btn btn-lg btn-block btn-default" id="rev">
+    <i class="fa fa-backward"></i>
+   </button>
+  </td>
+  <td>
+   <button type="button" class="btn btn-lg btn-block btn-default" id="play">
+    <i class="fa fa-play"></i> / <i class="fa fa-pause"></i>
+   </button>
+  </td>
+  <td>
+   <button type="button" class="btn btn-lg btn-block btn-default" id="fwd">
+    <i class="fa fa-forward"></i>
+   </button>
+  </td>
+ </tr>
+</table>
 
-     <button type="button" class="btn btn-lg btn-block btn-primary" id="home">
-      <i class="fa fa-home"></i> Home
-     </button>
-    </div>
-    <div class="col-md-4">
-     <button type="button" class="btn btn-lg btn-block btn-primary" id="play">
-      <i class="fa fa-play"></i> / <i class="fa fa-pause"></i>
-     </button>
-    </div>
-   </div>
-   <div class="row">
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
-
-     <button type="button" class="btn btn-lg btn-block btn-default" id="up">
-      <i class="fa fa-chevron-up"></i>
-     </button>
-    </div>
-    <div class="col-md-4">
-    </div>
-   </div>
-   <div class="row">
-    <div class="col-md-4">
-
-     <button type="button" class="btn btn-lg btn-block btn-default" id="left">
-      <i class="fa fa-chevron-left"></i>
-     </button>
-    </div>
-    <div class="col-md-4">
-
-     <button type="button" class="btn btn-lg btn-primary btn-block" id="select">
-      Select
-     </button>
-    </div>
-    <div class="col-md-4">
-
-     <button type="button" class="btn btn-lg btn-block btn-default" id="right">
-      <i class="fa fa-chevron-right"></i>
-     </button>
-    </div>
-   </div>
-   <div class="row">
-    <div class="col-md-4">
-    </div>
-    <div class="col-md-4">
-
-     <button type="button" class="btn btn-block btn-lg btn-default" id="down">
-      <i class="fa fa-chevron-down"></i>
-     </button>
-    </div>
-    <div class="col-md-4">
-    </div>
-   </div>
-  </div>
- </div>
-
-</div>
 <a class="clear_cookies">Click here to clear the IP address cookie.</a>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
