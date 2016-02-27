@@ -34,13 +34,12 @@ function checkCookie() {
     }
 }
 $(document).ready(function(){
-
+    $("button").vibrate(20);
     while(!ip_address){
         checkCookie();
     }
 
     $("button").click(function(){
-        $(this).vibrate(20);
         var value = $(this).attr('id');
         var url = 'http://' + ip_address + ':8060/keypress/' + value;
         $.post(url);
@@ -51,21 +50,6 @@ $(document).ready(function(){
         document.cookie = "ip=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
         alert("The ip address cookie has been cleared. You will be prompted again for your IP address.");
         location.reload();
-    });
-
-
-    var wrongurl = "http://192.168.1.242:8060";
-    $.ajax({
-        type: "POST",
-        url: wrongurl,
-        timeout: 300, // adjust the limit. currently its 15 seconds
-        error: function(data){
-            console.log(data);
-        }
-    });
-    $.post(wrongurl, function(data){
-       var parse = $.parseXML(data);
-        console.log(parse);
     });
 
 
