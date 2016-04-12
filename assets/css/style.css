@@ -9,6 +9,7 @@ td{
     width:31%;
     margin:5px;
     border:5px solid #000;
+    text-align:center;
 }
 
 .parent {
@@ -32,4 +33,7 @@ button {
 }
 .btn-primary:active, .btn-primary:hover{
     background-color:#5D3494;
+}
+.fa-keyboard-o {
+    color:#fff;
 }
