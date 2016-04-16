@@ -22,8 +22,8 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie = cname + "=" + cvalue + "; " + expires;
 }
 
-function getCookie(cname) {
-    var ip = cname + "=";
+function getCookie() {
+
     var ca = document.cookie.split(';');
     for(var i=0; i<ca.length; i++) {
         var c = ca[i];
@@ -47,17 +47,22 @@ function checkCookie() {
     }
 }
 $(document).ready(function(){
-    $("button").vibrate(20);
+
+
     while(!ip_address){
         checkCookie();
     }
 
-    $("button").click(function(){
-        var value = $(this).attr('id');
-        var url = 'http://' + ip_address + ':8060/keypress/' + value;
-        $.post(url);
+    $("#showkeyboard").click(function(){
+       $("#textinput").focus().toggleClass('active', true);
         return false;
+
     });
+    $("#textinput").blur(function(){
+       $(this).removeClass('active');
+    });
+
+
 
     $(document).keydown(function(e){
         var key;
@@ -76,6 +81,12 @@ $(document).ready(function(){
         document.cookie = "ip=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
         alert("The ip address cookie has been cleared. You will be prompted again for your IP address.");
         location.reload();
+    });
+    $("button").vibrate(20).click(function(){
+        var value = $(this).attr('id');
+        var url = 'http://' + ip_address + ':8060/keypress/' + value;
+        $.post(url);
+        return false;
     });
 
 
