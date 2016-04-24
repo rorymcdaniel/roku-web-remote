@@ -37,4 +37,4 @@ button {
 .fa-keyboard-o {
     color:#fff;
 }
-#textinput{display:none;}
+#textinput{display:none;max-width:100px;}

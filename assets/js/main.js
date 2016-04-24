@@ -54,12 +54,12 @@ $(document).ready(function(){
     }
 
     $("#showkeyboard").click(function(){
-       $("#textinput").focus().toggleClass('active', true);
+       $("#textinput").slideDown().focus();
         return false;
 
     });
     $("#textinput").blur(function(){
-       $(this).removeClass('active');
+       $(this).slideUp().empty();
     });
 
 
