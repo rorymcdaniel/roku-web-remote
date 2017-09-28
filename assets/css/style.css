@@ -37,7 +37,10 @@ button {
 .fa-keyboard-o {
     color:#fff;
 }
-#textinput{display:none;max-width:100px;}
+#textinput {
+    display:none;
+    max-width:100px;
+}
 
 @media screen and (min-width : 800px) {
     #showkeyboard{
