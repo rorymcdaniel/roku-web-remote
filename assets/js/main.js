@@ -7,26 +7,11 @@ let app = new Vue({
             8: "Backspace",
             13: "Select",
             27: "Back",
-            32: "Space",
+            32: "Lit_+",
             37: "Left",
             38: "Up",
             39: "Right",
             40: "Down"
-        }
-    },
-    computed: {
-        ipAddress: function() {
-            let cookie = getCookie("ip");
-            let ip = cookie.split("=");
-            if (cookie) {
-                ip_address = ip[1];
-            } else {
-                ip = prompt("Enter the IP Address of your Roku:", "");
-                if (ip !== "" && ip !== null) {
-                    setCookie("ip", ip, 365);
-                    ip_address = ip;
-                }
-            }
         }
     },
     methods: {
@@ -54,6 +39,7 @@ let app = new Vue({
         checkCookie: function() {
             let cookie = this.getCookie("ip");
             let ip = cookie.split("=");
+
             if (cookie) {
                 this.ip_address = ip[1];
             } else {
@@ -64,28 +50,43 @@ let app = new Vue({
                 }
             }
         },
-        toggleKeyboard: function() {
+        toggleKeyboard: function(event) {
+            event.stopPropagation();
             let input = document.getElementById('textinput');
-            if (input.style.display === 'none') {
-                input.style.display = 'block';
-                input.focus();
+            if (input.classList.contains('visible')) {
+                this.slideUp(input);
+                input.classList.remove('visible');
             } else {
-                input.style.display = 'none';
+                this.slideDown(input);
+                input.classList.add('visible');
+                input.focus();
+
             }
+
         },
         sendCommand: function (e) {
-            if(e.target.tagName === "I") {
+
+            let tagName = e.target.tagName;
+            if(tagName === "I" || tagName === 'SPAN') {
                 e.target.parentNode.click();
-            } else if (e.target.tagName === "BUTTON") {
+            } else if (tagName === "DIV") {
                 let key = e.target.getAttribute('id');
-                axios.post('http://' + this.ip_address + ':8060/keypress/' + key)
-                    .then(function (response) {
-                    console.log(response);
-                    })
-                    .catch(function (error) {
-                        //console.log(error);
-                    });
+                if(key) {
+                    axios.post('http://' + this.ip_address + ':8060/keypress/' + key)
+                        .then(function (response) {
+                            console.log(response);
+                        })
+                        .catch(function (error) {
+                            //console.log(error);
+                        });
+                }
+                let targetId = e.target.getAttribute('id');
+                if (targetId === 'play') {
+                    this.togglePlayButton();
+                }
+
             }
+
             return false;
         },
         handleKeyPress: function(event) {
@@ -94,11 +95,47 @@ let app = new Vue({
             if(this.keymap.hasOwnProperty(event.which)){
                 key = this.keymap[event.which];
             } else {
-                key = 'Lit_' +  encodeURIComponent(String.fromCharCode(event.which));
+                key = 'Lit_' +  encodeURIComponent(String.fromCharCode(event.which).toLowerCase());
             }
-            console.log(key);
             let url = 'http://' + this.ip_address + ':8060/keypress/' + key;
             axios.post(url).then(function() {}).catch(function(error) { });
+            return false;
+        },
+
+        togglePlayButton: function() {
+            let el = document.getElementById('playbutton');
+            if (el.classList.contains('fa-play')) {
+                el.classList.remove('fa-play');
+                el.classList.add('fa-pause');
+            } else {
+                el.classList.add('fa-play');
+                el.classList.remove('fa-pause');
+            }
+        },
+        slideDown: function(el) {
+
+            el.style.maxHeight = '48px';
+            // We're using a timer to set opacity = 0 because setting max-height = 0 doesn't (completely) hide the element.
+            el.style.opacity   = '1';
+
+        },
+        slideUp: function(el) {
+
+            el.style.maxHeight = '0';
+            this.once( 1, function () {
+                el.style.opacity = '0';
+
+            });
+        },
+        once: function(seconds, callback) {
+            let counter = 0;
+            let time = window.setInterval( function () {
+                counter++;
+                if ( counter >= seconds ) {
+                    callback();
+                    window.clearInterval( time );
+                }
+            }, 400 );
         }
 
     },

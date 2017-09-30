@@ -1,49 +1,53 @@
 body {
     background-color:#000;
-}
-.container-fluid{
-    width:100%;
-    max-width:500px;
-}
-td{
-    width:31%;
-    margin:5px;
-    border:5px solid #000;
-    text-align:center;
+    font-family: Arial, sans-serif;
 }
 
-.parent {
-    position: relative;
-}
-button {
-    height:46px;
-}
-.child {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+
 .clear_cookies {
  position: absolute; bottom: 0; right: 0;
 }
-.btn-primary{
-    background-color:#442C76;
-    border-color:#130269;
-}
-.btn-primary:active, .btn-primary:hover{
-    background-color:#5D3494;
-}
-.fa-keyboard-o {
-    color:#fff;
-}
+
 #textinput {
-    display:none;
-    max-width:100px;
+    width:100%;
+    font-size:32px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease 0s;
 }
 
-@media screen and (min-width : 800px) {
-    #showkeyboard{
-        display:none;
-    }
+.wrapper {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.wrapper > div {
+    border: 1px solid #130269;
+    border-radius: 5px;
+    background-color:#442C76;
+    padding: 5px;
+    color: #ffffff;
+}
+.wrapper > div:hover {
+    cursor:pointer;
+    background-color:#5D3494;
+}
+
+
+.wrapper {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     grid-gap: 5px;
+     grid-auto-rows: minmax(30px, auto);
+ }
+
+#app i.fa, .centered {
+    line-height:48px;
+    display:block;
+    text-align:center;
+}
+
+.centered {
+    font-weight:bold;
 }
