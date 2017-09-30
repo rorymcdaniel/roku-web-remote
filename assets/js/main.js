@@ -12,7 +12,8 @@ let app = new Vue({
             38: "Up",
             39: "Right",
             40: "Down"
-        }
+        },
+        apps: {},
     },
     methods: {
 
@@ -136,8 +137,18 @@ let app = new Vue({
                     window.clearInterval( time );
                 }
             }, 400 );
+        },
+        launchChannel: function(event) {
+            let channelId = event.target.getAttribute('data-channel');
+            axios.post(this.rokuUrl + '/launch/' + channelId);
         }
 
+    },
+    computed: {
+
+        rokuUrl : function() {
+            return 'http://' + this.ip_address + ":8060";
+        }
     },
     mounted: function () {
         this.checkCookie();

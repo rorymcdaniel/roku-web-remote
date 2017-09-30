@@ -61,7 +61,16 @@
     <div style="grid-row:6;grid-column:2" @click="toggleKeyboard">
      <i class="fa fa-keyboard-o fa-3x"></i>
     </div>
-    <div style="grid-row:7/9;grid-column:1/4;background-color:unset;border:none;">
+     <div style="height:80px; grid-row:7;grid-column:1;background:url(assets/images/mlb.tv.small.png) center center; background-size:cover;" @click="launchChannel" data-channel="14">
+
+     </div>
+     <div style="height:80px; grid-row:7;grid-column:2;background:url(assets/images/netflix.small.png) center center; background-size:cover;" @click="launchChannel" data-channel="12">
+
+     </div>
+     <div style="height:80px; grid-row:7;grid-column:3;background:url(assets/images/plex.small.jpg) center center; background-size:cover;" @click="launchChannel" data-channel="13535">
+
+     </div>
+    <div style="grid-row:8/10;grid-column:1/4;background-color:unset;border:none;">
      <input type="text" @blur="toggleKeyboard" id="textinput">
     </div>
 
